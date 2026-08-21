@@ -322,18 +322,8 @@ a {
   grid-template-columns: 6.5rem 1fr auto;
   align-items: baseline;
   gap: 1.25rem;
-  padding-block: 1.05rem;
-  border-bottom: 1px solid var(--line);
+  padding-block: 0.85rem;
   text-decoration: none;
-  transition: border-color 0.2s ease;
-}
-
-.ledger li:first-child a {
-  border-top: 1px solid var(--line);
-}
-
-.ledger a:hover {
-  border-color: var(--green-dim);
 }
 
 .ledger time {
