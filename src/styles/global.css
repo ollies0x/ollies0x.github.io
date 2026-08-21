@@ -17,11 +17,33 @@
   --green-dim: rgba(0, 255, 85, 0.55);
   --line: rgba(255, 255, 255, 0.08);
   --line-strong: rgba(255, 255, 255, 0.14);
+  --grid: rgba(255, 255, 255, 0.045);
+  --glow: rgba(0, 255, 85, 0.075);
   --font-display: 'Space Grotesk Variable', system-ui, sans-serif;
   --font-body: 'Inter Variable', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
   --font-serif: 'Newsreader', georgia, serif;
   --measure: 68ch;
+  color-scheme: dark;
+}
+
+/* ---------- lights on (journal) ---------- */
+
+html[data-theme='light'] {
+  --bg: #fafaf6;
+  --bg-raised: #ffffff;
+  --bg-code: #f0efe8;
+  --text: #1c1c19;
+  --text-dim: #55554e;
+  --text-faint: #8b8b82;
+  --green: #00912f;
+  --green-deep: #007526;
+  --green-dim: rgba(0, 145, 47, 0.4);
+  --line: rgba(0, 0, 0, 0.1);
+  --line-strong: rgba(0, 0, 0, 0.18);
+  --grid: rgba(0, 0, 0, 0.05);
+  --glow: rgba(0, 180, 60, 0.07);
+  color-scheme: light;
 }
 
 * {
@@ -46,6 +68,13 @@ body {
   flex-direction: column;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* atmosphere crossfades between themes */
+.atmosphere,
+.atmosphere::after {
+  transition: background-size 0.3s ease;
 }
 
 ::selection {
@@ -59,7 +88,7 @@ body {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-image: radial-gradient(var(--grid) 1px, transparent 1px);
   background-size: 26px 26px;
   mask-image: linear-gradient(to bottom, black 0%, black 55%, transparent 100%);
 }
@@ -68,7 +97,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(720px 420px at 50% -140px, rgba(0, 255, 85, 0.075), transparent 70%);
+  background: radial-gradient(720px 420px at 50% -140px, var(--glow), transparent 70%);
 }
 
 a {
@@ -135,6 +164,24 @@ a {
 .site-nav a:hover,
 .site-nav a[aria-current='true'] {
   color: var(--green);
+}
+
+.lights {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  background: none;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  color: var(--text-dim);
+  padding: 0.3rem 0.65rem;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.lights:hover {
+  color: var(--green);
+  border-color: var(--green-dim);
 }
 
 /* ---------- hero ---------- */

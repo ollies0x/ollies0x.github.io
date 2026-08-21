@@ -8,6 +8,7 @@ interface Props {
   type?: 'website' | 'article';
   publishedTime?: Date;
   noindex?: boolean;
+  defaultTheme?: 'dark' | 'light';
 }
 
 const {
@@ -17,6 +18,7 @@ const {
   type = 'website',
   publishedTime,
   noindex = false,
+  defaultTheme = 'dark',
 } = Astro.props;
 
 const site = Astro.site ?? new URL('https://ollies0x.github.io');
@@ -62,10 +64,22 @@ const pageTitle = title === 'ollies0x' ? 'ollies0x' : `${title} - ollies0x`;
 ---
 
 <!doctype html>
-<html lang="en-AU">
+<html lang="en-AU" data-default-theme={defaultTheme}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      (() => {
+        const apply = () => {
+          const stored = localStorage.getItem('ollies0x-theme');
+          const fallback =
+            document.documentElement.dataset.defaultTheme === 'light' ? 'light' : 'dark';
+          document.documentElement.dataset.theme = stored || fallback;
+        };
+        apply();
+        document.addEventListener('astro:after-swap', apply);
+      })();
+    </script>
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
