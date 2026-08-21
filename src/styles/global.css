@@ -284,6 +284,20 @@ a {
   color: var(--green);
 }
 
+a.link-green,
+.prose .content a.link-green {
+  color: var(--green);
+  text-decoration: none;
+}
+
+a.link-green:hover,
+.prose .content a.link-green:hover {
+  color: var(--green-deep);
+  text-decoration: underline;
+  text-decoration-color: var(--green);
+  text-underline-offset: 3px;
+}
+
 /* ---------- section headings ---------- */
 
 .section-head {
