@@ -1,0 +1,28 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+}
+
+const { posts } = Astro.props;
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-AU', { day: '2-digit', month: 'short', year: 'numeric' });
+---
+
+<ul class="ledger">
+  {
+    posts.map((post) => (
+      <li>
+        <a href={`/blog/${post.id}/`}>
+          <time datetime={post.data.date.toISOString()}>{fmt(post.data.date)}</time>
+          <span class="title">{post.data.title}</span>
+          <span class="arrow" aria-hidden="true">
+            -&gt;
+          </span>
+        </a>
+      </li>
+    ))
+  }
+</ul>

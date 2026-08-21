@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PostLedger from '../components/PostLedger.astro';
+import { getPosts } from '../utils/posts';
+
+const posts = (await getPosts()).slice(0, 5);
+---
+
+<BaseLayout
+  title="ollies0x"
+  description="Marketing, SEO, code and AI. Ollie Worthington building in public from Melbourne - build logs, deep AI thoughts, and the work behind Underdog Digital."
+>
+  <Header active="home" />
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <p class="statusline">
+          <span class="prompt">&gt;</span>
+          <span>building in public</span>
+          <span class="cursor" aria-hidden="true"></span>
+        </p>
+        <h1>Build useful things. Understand the internet. <em>Say what actually happened.</em></h1>
+        <p class="lede">
+          I'm <strong>Ollie</strong> - founder of <a href="https://underdog.digital"
+            >Underdog Digital</a
+          >. This is my build log: SEO, AI agents, design, and the occasional deep thought about
+          where search is going.
+        </p>
+        <div class="hero-links">
+          <a class="btn" href="/blog/">read the blog</a>
+          <a class="link-quiet" href="/about/">who is this -&gt;</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="wrap">
+        <h2 class="section-head"><span class="index">01</span> latest writing</h2>
+        <PostLedger posts={posts} />
+        <p style="margin-top: 1.5rem">
+          <a class="link-quiet" href="/blog/">all posts -&gt;</a>
+        </p>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

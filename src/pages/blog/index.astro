@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import PostLedger from '../../components/PostLedger.astro';
+import { getPosts } from '../../utils/posts';
+
+const posts = await getPosts();
+
+const byYear = new Map<number, typeof posts>();
+for (const post of posts) {
+  const y = post.data.date.getFullYear();
+  if (!byYear.has(y)) byYear.set(y, []);
+  byYear.get(y)!.push(post);
+}
+
+const years = [...byYear.keys()].sort((a, b) => b - a);
+---
+
+<BaseLayout
+  title="Blog"
+  description="Build logs, SEO teardowns, AI thoughts and design notes from Ollie Worthington (@ollies0x)."
+>
+  <Header active="blog" />
+  <main class="prose">
+    <div class="wrap wrap-narrow">
+      <h1 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -0.03em;">
+        Writing
+      </h1>
+      <p style="color: var(--text-dim); margin-top: 1rem; max-width: 52ch;">
+        Build logs and deep thoughts. SEO, AI, design, and whatever the internet did this week.
+      </p>
+      <div style="margin-top: 3.5rem">
+        {
+          years.map((year) => (
+            <section class="year-group">
+              <h2 class="section-head">
+                <span class="index">{year}</span> {byYear.get(year)!.length} posts
+              </h2>
+              <PostLedger posts={byYear.get(year)!} />
+            </section>
+          ))
+        }
+      </div>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

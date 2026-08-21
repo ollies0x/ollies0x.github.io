@@ -1,0 +1,72 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getPosts, readingTime } from '../../utils/posts';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post, i) => ({
+    params: { slug: post.id },
+    props: {
+      post,
+      next: posts[i + 1] ?? null,
+    },
+  }));
+}
+
+const { post, next } = Astro.props;
+const { Content } = await render(post);
+const { title, description, date, tags } = post.data;
+const minutes = readingTime(post.body ?? '');
+
+const fmt = date.toLocaleDateString('en-AU', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  type="article"
+  publishedTime={date}
+  ogImage={`/og/${post.id}.png`}
+>
+  <Header />
+  <main class="prose">
+    <article class="wrap wrap-narrow">
+      <header class="prose-header">
+        <a class="backlink" href="/blog/">&lt;- all posts</a>
+        <h1>{title}</h1>
+        <div class="meta-row">
+          <time datetime={date.toISOString()}>{fmt}</time>
+          <span>{minutes} min read</span>
+          {
+            tags.map((t) => (
+              <span class="tag">
+                #{t}
+              </span>
+            ))
+          }
+        </div>
+      </header>
+      <div class="content">
+        <Content />
+      </div>
+      <footer class="post-footer">
+        <a class="backlink" style="margin-bottom: 0" href="/blog/">&lt;- all posts</a>
+        {
+          next && (
+            <a class="link-quiet" href={`/blog/${next.id}/`}>
+              next: {next.data.title} -&gt;
+            </a>
+          )
+        }
+      </footer>
+    </article>
+  </main>
+  <Footer />
+</BaseLayout>

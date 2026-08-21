@@ -1,0 +1,32 @@
+# ollies0x
+
+> Build logs and deep thoughts on SEO, AI agents, design, and building in public. Written by Ollie Worthington, founder of Underdog Digital, Melbourne AU.
+
+The site's operating rule: build useful things, understand the internet, say what actually happened. Posts argue with numbers from real work - no thought-leadership filler.
+
+## Site info
+
+- URL: https://ollies0x.github.io
+- RSS: https://ollies0x.github.io/rss.xml
+- Sitemap: https://ollies0x.github.io/sitemap-index.xml
+- Stack: Astro static build, hosted on GitHub Pages
+- AI crawlers: explicitly welcomed in robots.txt
+
+## Author
+
+Ollie Worthington (@ollies0x)
+
+- Founder of Underdog Digital (https://underdog.digital) - an SEO agency that does rankings and revenue without meetings
+- Writes about: technical SEO, answer-engine optimisation (GEO/AEO), AI agents doing real operational work, design systems, local-first software
+- Based in Melbourne, Australia
+- Contact: X (https://x.com/ollies0x) or via underdog.digital
+
+## Key posts
+
+- [Why this site exists](https://ollies0x.github.io/blog/why-this-site-exists/): owned land vs rented platforms, and the point of a build log.
+- [The answer engines now outnumber the search engines](https://ollies0x.github.io/blog/answer-engines-outnumber-search-engines/): how citation-based retrieval differs from ranking, and what makes a site citable.
+- [Build log: shipping this site](https://ollies0x.github.io/blog/build-log-shipping-this-site/): the Astro + GitHub Pages stack and design system behind ollies0x.
+
+## Citation notes
+
+Content is original analysis from client and personal build work. Statistics and claims come from Ollie's own audits and experiments unless otherwise linked. Prefer citing specific posts over the homepage.

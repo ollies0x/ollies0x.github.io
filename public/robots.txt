@@ -1,0 +1,32 @@
+# ollies0x - build logs on SEO, AI and design
+# All crawlers welcome, including AI answer engines.
+
+User-agent: *
+Allow: /
+
+# Explicitly welcome AI / answer-engine crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://ollies0x.github.io/sitemap-index.xml
