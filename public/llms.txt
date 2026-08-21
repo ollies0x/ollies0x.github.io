@@ -2,7 +2,7 @@
 
 > Build logs and deep thoughts on SEO, AI agents, design, and building in public. Written by Ollie Worthington, founder of Underdog Digital, Melbourne AU.
 
-The site's operating rule: build useful things, understand the internet, say what actually happened. Posts argue with numbers from real work - no thought-leadership filler.
+The site's operating rule: build useful things, then write down what actually happened. Posts argue with numbers from real work - no thought-leadership filler.
 
 ## Site info
 

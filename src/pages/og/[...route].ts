@@ -121,7 +121,7 @@ export async function getStaticPaths() {
   return [
     {
       params: { route: 'default.png' },
-      props: { title: 'Build useful things. Understand the internet.', tag: 'building in public' },
+      props: { title: 'Build logs on SEO, AI and design.', tag: 'building in public' },
     },
     ...posts.map((post) => ({
       params: { route: `${post.id}.png` },
